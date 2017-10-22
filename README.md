@@ -151,3 +151,11 @@ so I could use fetch to check some specific pages.
     # (only for the URL passed as command line argument)
     $ scrapy shell --no-redirect --nolog http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F -c '(response.status, response.url)'
     (302, 'http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F')
+
+
+爬虫流程：
++ 首先生成抓取第一个URL的初始 request，request 下载完成后生成 response ，然后指定对 response 要使用的回调函数。
++ 通过调用 start_requests() 方法（默认情况下）为 start_urls 中指定的URL生成初始的 Request 以及将 parse 方法作为请求的回调函数。
++ 在回调函数中，您将解析 Response（网页）并返回带有提取的数据的 dict，Item对象，Request 对象或这些对象的可迭代容器。这些请求还将包含回调（可能是相同的），然后由 Scrapy 下载，然后由指定的回调处理它们的响应。
++ 在回调函数中，您通常使用 选择器 来解析页面内容（但您也可以使用BeautifulSoup，lxml或您喜欢的任何解析器），并使用解析的数据生成 Item。
++ 最后，从爬虫返回的 Item 通常将持久存储到数据库（在某些 Item Pipeline 中）或使用 Feed导出 写入文件。

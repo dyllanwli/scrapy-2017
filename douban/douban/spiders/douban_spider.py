@@ -18,9 +18,9 @@ class DoubanTop(Spider):
         rank = 0
         for book in books:
             rank += 1
-            item.book_name = book.xpath('.//div[@class = "pl2"]/a/text()').extract()[0].replace('\n','').split()[0]
-            item.author = book.xpath('.//p[@class = "pl"]//text()').extract()[0].replace('\n','')
-            item.ranking = str(rank)
-            item.score = book.xpath('.//span[@class = "rating_nums"]//text()').extract()[0]
-            item.score_num = book.xpath('.//div[@class = "star clearfix"]//span[@class = "pl"]//text()').re(r'(\d+)')[0]
+            item["book_name"] = book.xpath('.//div[@class = "pl2"]/a/text()').extract()[0].replace('\n','').split()[0]
+            item["author"] = book.xpath('.//p[@class = "pl"]//text()').extract()[0].replace('\n','')
+            item["ranking"] = str(rank)
+            item["score"] = book.xpath('.//span[@class = "rating_nums"]//text()').extract()[0]
+            item["score_num"] = book.xpath('.//div[@class = "star clearfix"]//span[@class = "pl"]//text()').re(r'(\d+)')[0]
             yield item

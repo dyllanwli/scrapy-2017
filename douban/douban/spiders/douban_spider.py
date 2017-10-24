@@ -22,5 +22,5 @@ class DoubanTop(Spider):
             item.author = book.xpath('.//p[@class = "pl"]//text()').extract()[0]
             item.ranking = str(rank)
             item.score = book.xpath('.//span[@class = "rating_nums"]//text()').extract()[0]
-            item.score_num = book.xpath('.//div[@class = "star clearfix"]//span[@class = "pl"]//text()').re(ur'(\d+)')[0]
+            item.score_num = book.xpath('.//div[@class = "star clearfix"]//span[@class = "pl"]//text()').extract[0]
             yield item

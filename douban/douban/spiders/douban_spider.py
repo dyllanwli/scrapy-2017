@@ -24,3 +24,6 @@ class DoubanTop(Spider):
             item["score"] = book.xpath('.//span[@class = "rating_nums"]//text()').extract()[0]
             item["score_num"] = book.xpath('.//div[@class = "star clearfix"]//span[@class = "pl"]//text()').re(r'(\d+)')[0]
             yield item
+        next_url = response.xpath('//span[@class="next"]/a/@href').extract()[0]
+        if next_url:
+            yield Request(next_url, headers=self.headers)

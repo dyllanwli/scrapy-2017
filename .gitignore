@@ -3,3 +3,5 @@ tutorial/tutorial/quotes-2.html
 tutorial/tutorial/__pycache__/
 tutorial/tutorial/spiders/__pycache__/
 tutorial/tutorial/quotes.json
+douban/douban/__pycache__/
+douban/douban/spiders/__pycache__/

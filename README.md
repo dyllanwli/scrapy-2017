@@ -1,4 +1,4 @@
-# scrapy-2017
+# scrapy-notes
 
 I noticed that there are some bug since some website has changed its method to defence crawls. So I try to start some project from scratch. So use tutorial as begin. 
 
@@ -49,7 +49,10 @@ Global command:
 
 + genspider
 
+生成爬虫
+
     scrapy genspider [-t template] <name> <domain>
+
     # needed project, create a spider in current directory. and the domain aggr is use to generate allowed_domains and start_urls spider properties.
 
     # e.g.
